@@ -1,3 +1,4 @@
 #!/bin/sh
 
-free --mebi | awk 'NR == 2{printf(" ^c#EBDBB2^MEM ^c#CC241D^%2.2f/%2.2f GiB ", ($3 / 1024), ($2 / 1024))}'
+cmd="\" ^c$(xgetres dwmblocks.tagcolor)^MEM ^c$(xgetres dwmblocks.memory_col)^%2.2f/%2.2f GiB \""
+free --mebi  | awk "NR == 2{printf($cmd, (\$3 / 1024), (\$2 / 1024))}"
