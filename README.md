@@ -18,3 +18,14 @@ I do not maintain these but I will take pull requests to update them.
 `blocks.def.h` renamed to `config.def.h`.
 <br>
 Scripts in `scripts` do not work out of the box. In any way these scripts must be put or linked in PATH.
+<br>
+The scripts get the colors with the `xgetres` command. It won't work unless you install it. It's available in the AUR.
+You also have to define the colors you want in a working Xresources file.
+The values you have to set are:
+* `dwmblocks.tagcolor`
+* `dwmblocks.hostanduser_col`
+* `dwmblocks.keyboard_layout_col`
+* `dwmblocks.network_col`
+* `dwmblocks.volume_col`
+* `dwmblocks.memory_col`
+* `dwmblocks.date_col`
