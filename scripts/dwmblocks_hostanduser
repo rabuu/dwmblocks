@@ -1,0 +1,3 @@
+#!/bin/sh
+
+printf ' ^c#ff0000^%s@%s ' "$USER" "$HOSTNAME"
