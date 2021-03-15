@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 TAG=$(xgetres dwmblocks.tagcolor)
 COLOR=$(xgetres dwmblocks.network_col)
