@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 cmd="\" ^c$(xgetres dwmblocks.tagcolor)^MEM ^c$(xgetres dwmblocks.memory_col)^%2.2f/%2.2f GiB \""
 free --mebi  | awk "NR == 2{printf($cmd, (\$3 / 1024), (\$2 / 1024))}"

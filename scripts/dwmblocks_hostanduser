@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 
 COLOR=$(xgetres dwmblocks.hostanduser_col)
 
-printf ' ^c%s^%s@%s ' "$COLOR" "$USER" "$HOSTNAME"
+printf ' ^c%s^%s@%s ' "$COLOR" "$USER" "$HOST"

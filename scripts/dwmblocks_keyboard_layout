@@ -1,13 +1,17 @@
-#!/bin/bash
+#!/bin/sh
 
 TAG=$(xgetres dwmblocks.tagcolor)
 COLOR=$(xgetres dwmblocks.keyboard_layout_col)
 
 if setxkbmap -query | grep -Gq "layout:\s*de"
 then
-	layout='De'
-else
-	layout='Us'
+	layout='de'
+else if setxkbmap -query | grep -Gq "layout:\s*us"
+	then
+		layout='us'
+	else
+		layout='?'
+	fi
 fi
 
 printf ' ^c%s^LAY ^c%s^%s ' "$TAG" "$COLOR" "$layout"

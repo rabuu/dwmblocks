@@ -1,7 +1,7 @@
 static const Block blocks[] = {
 	/* icon */   /* command */                   /* update interval */   /* update signal */
 	{ "",         "dwmblocks_hostanduser",			0,						0 },
-	{ "",         "dwmblocks_keyboard_layout",		0,						1 },
+	{ "",         "dwmblocks_keyboard_layout",		5,						1 },
 	{ "",         "dwmblocks_network",				5,						0 },
 	{ "",         "dwmblocks_volume",				0,						2 },
 	{ "",         "dwmblocks_memory",				5,						0 },
