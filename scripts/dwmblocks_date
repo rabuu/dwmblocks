@@ -2,7 +2,7 @@
 
 time=$(date '+%a - %d. %b %Y - %R:%S')
 
-TAG=$(xgetres dwmblocks.tagcolor)
-COLOR=$(xgetres dwmblocks.date_col)
+TAG=$(xgetres dwmblocks.tagcolor) || TAG='#ffffff'
+COLOR=$(xgetres dwmblocks.date_col) || COLOR='#00ffff'
 
 printf ' ^c%s^DAT ^c%s^%s ' "$TAG" "$COLOR" "$time"

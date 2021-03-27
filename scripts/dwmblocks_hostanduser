@@ -1,6 +1,6 @@
 #!/bin/sh
 
-COLOR=$(xgetres dwmblocks.hostanduser_col)
+COLOR=$(xgetres dwmblocks.hostanduser_col) || COLOR='#333333'
 hostname=$(cat /etc/hostname)
 
 printf ' ^c%s^%s@%s ' "$COLOR" "$USER" "$hostname"

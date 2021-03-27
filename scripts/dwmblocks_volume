@@ -4,7 +4,7 @@ volume=$(pamixer --get-volume)
 
 speakers=$(pamixer --get-mute | sed 's/false/A/;s/true/M/')
 
-TAG=$(xgetres dwmblocks.tagcolor)
-COLOR=$(xgetres dwmblocks.volume_col)
+TAG=$(xgetres dwmblocks.tagcolor) || TAG='#ffffff'
+COLOR=$(xgetres dwmblocks.volume_col) || COLOR='#ff0000'
 
 printf ' ^c%s^VOL ^c%s^%3s%% %s %s ' "$TAG" "$COLOR" "$volume" "$speakers"
