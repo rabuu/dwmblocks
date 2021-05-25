@@ -1,10 +1,11 @@
 #!/bin/sh
 
-TAG=$(xgetres dwmblocks.tagcolor) || TAG='#ffffff'
+TAG='net'
+TAG_COLOR=$(xgetres dwmblocks.tagcolor) || TAG_COLOR='#ffffff'
 COLOR=$(xgetres dwmblocks.network_col) || COLOR='#ffff00'
 
 connection=$(nmcli -a | grep 'Wired' | awk 'NR == 1 {print $1; exit}')
 [ -z $connection ] && connection=$(nmcli -t -f active,ssid dev wifi | grep -m 1 '^yes' | cut -c 5-)
 [ -z $connection ] && connection='Off'
 
-printf ' ^c%s^NET ^c%s^%s ' "$TAG" "$COLOR" "$connection"
+printf ' ^c%s^%s ^c%s^%s ' "$TAG_COLOR" "$TAG" "$COLOR" "$connection"

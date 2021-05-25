@@ -1,8 +1,9 @@
 #!/bin/sh
 
-time=$(date '+%a %Y-%m-%d %R:%S')
-
-TAG=$(xgetres dwmblocks.tagcolor) || TAG='#ffffff'
+TAG='dat'
+TAG_COLOR=$(xgetres dwmblocks.tagcolor) || TAG_COLOR='#ffffff'
 COLOR=$(xgetres dwmblocks.date_col) || COLOR='#00ffff'
 
-printf ' ^c%s^DAT ^c%s^%s ' "$TAG" "$COLOR" "$time"
+time=$(date '+%a %Y-%m-%d %R:%S')
+
+printf ' ^c%s^%s ^c%s^%s ' "$TAG_COLOR" "$TAG" "$COLOR" "$time"

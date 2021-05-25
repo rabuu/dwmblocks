@@ -1,5 +1,8 @@
 #!/bin/sh
 
-cmd="\" ^c$(xgetres dwmblocks.tagcolor)^MEM ^c$(xgetres dwmblocks.memory_col)^%2.2f/%2.2f GiB \"" || \
-	cmd="\" ^c#ffffff^MEM ^c#ff00ff^%2.2f/%2.2f GiB \""
+TAG='mem'
+TAG_COLOR=$(xgetres dwmblocks.tagcolor) || TAG_COLOR='#ffffff'
+COLOR=$(xgetres dwmblocks.memory_col) || COLOR='#ff00ff'
+
+cmd="\" ^c$TAG_COLOR^$TAG ^c$COLOR^%2.2f/%2.2f GiB \""
 free --mebi  | awk "NR == 2{printf($cmd, (\$3 / 1024), (\$2 / 1024))}"

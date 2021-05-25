@@ -1,20 +1,21 @@
 #!/bin/sh
 
-CONNAME=$(nmcli -a | grep 'Wired connection' | awk 'NR==1{print $1}')
-[ "$CONNAME" = '' ] && CONNAME=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
-
-PRIVATE=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
-PUBLIC=$(curl -s https://ipinfo.io/ip)
-
-TAG=$(xgetres dwmblocks.tagcolor) || TAG='#ffffff'
+TAG='net'
+TAG_COLOR=$(xgetres dwmblocks.tagcolor) || TAG_COLOR='#ffffff'
 COLOR=$(xgetres dwmblocks.network_col) || COLOR='#ffff00'
 
-if [ "$CONNAME" = '' ]; then
-  printf ' ^c%s^NET ^c%s^Not connected ' "$TAG" "$COLOR"
+conname=$(nmcli -a | grep 'Wired connection' | awk 'NR==1{print $1}')
+[ "$conname" = '' ] && conname=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -c 5-)
+
+private=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
+public=$(curl -s https://ipinfo.io/ip)
+
+if [ "$conname" = '' ]; then
+  printf ' ^c%s^%s ^c%s^%s ' "$TAG_COLOR" "$TAG" "$COLOR" 'No connection'
 else
-  if [ "$PUBLIC" = '' ]; then
-    printf ' ^c%s^NET ^c%s^%s: %s - %s ' "$TAG" "$COLOR" "$CONNAME" "$PRIVATE" 'No public IP detected'
+  if [ "$public" = '' ]; then
+    printf ' ^c%s^%s ^c%s^%s: %s - %s ' "$TAG_COLOR" "$TAG" "$COLOR" "$conname" "$private" 'No public IP detected'
   else
-    printf ' ^c%s^NET ^c%s^%s: %s - %s ' "$TAG" "$COLOR" "$CONNAME" "$PRIVATE" "$PUBLIC"
+    printf ' ^c%s^%s ^c%s^%s: %s - %s ' "$TAG_COLOR" "$TAG" "$COLOR" "$conname" "$private" "$public"
   fi
 fi

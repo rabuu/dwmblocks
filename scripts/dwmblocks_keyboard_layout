@@ -1,6 +1,7 @@
 #!/bin/sh
 
-TAG=$(xgetres dwmblocks.tagcolor) || TAG='#ffffff'
+TAG='lay'
+TAG_COLOR=$(xgetres dwmblocks.tagcolor) || TAG_COLOR='#ffffff'
 COLOR=$(xgetres dwmblocks.keyboard_layout_col) || COLOR='#00ff00'
 
 if setxkbmap -query | grep -Gq "layout:\s*de"
@@ -14,4 +15,4 @@ else if setxkbmap -query | grep -Gq "layout:\s*us"
 	fi
 fi
 
-printf ' ^c%s^LAY ^c%s^%s ' "$TAG" "$COLOR" "$layout"
+printf ' ^c%s^%s ^c%s^%s ' "$TAG_COLOR" "$TAG" "$COLOR" "$layout"
