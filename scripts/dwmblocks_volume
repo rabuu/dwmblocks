@@ -6,4 +6,4 @@ COLOR=$(xgetres dwmblocks.volume_col) || COLOR='#ff0000'
 
 volume=$(pamixer --get-volume)
 
-printf ' ^c%s^%s ^c%s^%3s%% %s ' "$TAG_COLOR" "$TAG" "$COLOR" "$volume"
+printf ' ^c%s^%s ^c%s^%s%% ' "$TAG_COLOR" "$TAG" "$COLOR" "$volume"
